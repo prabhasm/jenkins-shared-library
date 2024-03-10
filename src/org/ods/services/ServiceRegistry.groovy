@@ -9,7 +9,7 @@ class ServiceRegistry {
 
     //public static ServiceRegistry instance = new ServiceRegistry()
 
-    def instance = new ServiceRegistry()
+    static def instance = new ServiceRegistry()
 
     static def removeInstance() {
         if (instance?.registry) {
