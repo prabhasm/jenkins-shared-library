@@ -6,7 +6,7 @@ import org.apache.http.client.utils.URIBuilder
 
 import java.nio.charset.StandardCharsets
 
-@TypeChecked
+//@TypeChecked
 class AuthUtil {
 
     public static final String HEADER_AUTHORIZATION = 'Authorization'
