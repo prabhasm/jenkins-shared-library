@@ -3,7 +3,7 @@ import org.ods.util.Logger
 
 import org.ods.services.ServiceRegistry
 import org.ods.util.ClassLoaderCleaner
-import org.ods.util.UnirestConfig
+//import org.ods.util.UnirestConfig
 import java.lang.reflect.Method
 
 def call(Map config, Closure body) {
@@ -27,7 +27,7 @@ def call(Map config, Closure body) {
             logger.warn('-- SHUTTING DOWN Component Pipeline (..) --')
             logger.resetStopwatch()
             ServiceRegistry.removeInstance()
-            UnirestConfig.shutdown()
+         //   UnirestConfig.shutdown()
             try {
                 new ClassLoaderCleaner().clean(logger, processId)
                 // use the jenkins INTERNAL cleanupHeap method - attention NOTHING can happen after this method!
