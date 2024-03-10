@@ -3,7 +3,6 @@ import org.ods.util.Logger
 
 import org.ods.services.ServiceRegistry
 import org.ods.util.ClassLoaderCleaner
-//import org.ods.util.UnirestConfig
 import java.lang.reflect.Method
 
 def call(Map config, Closure body) {
