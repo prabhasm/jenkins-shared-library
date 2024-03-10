@@ -7,7 +7,9 @@ class ServiceRegistry {
 
     private Map registry = new ConcurrentHashMap()
 
-    public static ServiceRegistry instance = new ServiceRegistry()
+    //public static ServiceRegistry instance = new ServiceRegistry()
+
+    def instance = new ServiceRegistry()
 
     static def removeInstance() {
         if (instance?.registry) {
