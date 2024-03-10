@@ -1,9 +1,9 @@
 package org.ods.services
 
-@Grab(group='com.konghq', module='unirest-java', version='2.4.03', classifier='standalone')
+//@Grab(group='com.konghq', module='unirest-java', version='2.4.03', classifier='standalone')
 
 import groovy.json.JsonSlurperClassic
-import kong.unirest.Unirest
+//import kong.unirest.Unirest
 import org.ods.util.ILogger
 import com.cloudbees.groovy.cps.NonCPS
 import org.ods.util.AuthUtil
@@ -498,7 +498,7 @@ repos/${repo}/commits/${gitCommit}/reports/${data.key}"""
     @NonCPS
     private Map queryRepo(String token, String request, int limit, int nextPageStart) {
         Map<String, String> headers = buildHeaders(token)
-        def httpRequest = Unirest.get(request).headers(headers)
+        def httpRequest = null//Unirest.get(request).headers(headers)
         if (limit>0) {
             httpRequest.queryString("limit", limit)
         }

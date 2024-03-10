@@ -1,11 +1,11 @@
 package org.ods.orchestration.service
 
-@Grab('org.yaml:snakeyaml:1.24')
+//@Grab('org.yaml:snakeyaml:1.24')
 
 import java.nio.file.Paths
 
 import org.ods.util.IPipelineSteps
-import org.yaml.snakeyaml.Yaml
+//import org.yaml.snakeyaml.Yaml
 
 class LeVADocumentChaptersFileService {
 
@@ -39,7 +39,7 @@ class LeVADocumentChaptersFileService {
                 "Error: unable to load document chapters. File 'docs/${documentType}.yaml' could not be read."
             )
         } else {
-            data = new Yaml().load(yamlText) ?: [:]
+            //data = new Yaml().load(yamlText) ?: [:]
         }
 
         return data.collectEntries { chapter ->

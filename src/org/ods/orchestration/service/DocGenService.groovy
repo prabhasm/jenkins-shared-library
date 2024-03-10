@@ -1,6 +1,6 @@
 package org.ods.orchestration.service
 
-@Grab(group="com.konghq", module="unirest-java", version="2.4.03", classifier="standalone")
+//@Grab(group="com.konghq", module="unirest-java", version="2.4.03", classifier="standalone")
 
 import com.cloudbees.groovy.cps.NonCPS
 
@@ -9,7 +9,7 @@ import groovy.json.JsonSlurperClassic
 
 import java.net.URI
 
-import kong.unirest.Unirest
+//import kong.unirest.Unirest
 
 import org.apache.http.client.utils.URIBuilder
 
@@ -33,7 +33,7 @@ class DocGenService {
 
     @NonCPS
     byte[] createDocument(String type, String version, Map data) {
-        def response = Unirest.post("${this.baseURL}/document")
+        def response = null /*Unirest.post("${this.baseURL}/document")
             .header("Accept", "application/json")
             .header("Content-Type", "application/json")
             .body(JsonOutput.toJson([
@@ -43,7 +43,7 @@ class DocGenService {
                 ],
                 data: data
             ]))
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to create document '${type} (v${version})'. " +

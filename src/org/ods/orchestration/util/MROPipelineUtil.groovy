@@ -1,6 +1,6 @@
 package org.ods.orchestration.util
 
-@Grab('org.yaml:snakeyaml:1.24')
+//@Grab('org.yaml:snakeyaml:1.24')
 
 import groovy.transform.InheritConstructors
 

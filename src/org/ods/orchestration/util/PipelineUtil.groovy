@@ -1,12 +1,12 @@
 package org.ods.orchestration.util
 
-@Grab('net.lingala.zip4j:zip4j:2.1.1')
-@Grab('org.yaml:snakeyaml:1.24')
+//@Grab('net.lingala.zip4j:zip4j:2.1.1')
+//@Grab('org.yaml:snakeyaml:1.24')
 
 import com.cloudbees.groovy.cps.NonCPS
 
-import net.lingala.zip4j.ZipFile
-import net.lingala.zip4j.model.ZipParameters
+//import net.lingala.zip4j.ZipFile
+//import net.lingala.zip4j.model.ZipParameters
 
 import org.ods.util.IPipelineSteps
 import org.ods.util.ILogger
@@ -127,9 +127,9 @@ class PipelineUtil {
         this.createDirectory(new File(path).getParent())
 
         // Create the Zip file
-        def zipFile = new ZipFile(path)
+        def zipFile = null //new ZipFile(path)
         files.each { filePath, fileData ->
-            def params = new ZipParameters()
+            def params = null //new ZipParameters()
             params.setFileNameInZip(filePath)
             zipFile.addStream(new ByteArrayInputStream(fileData), params)
         }
@@ -143,7 +143,7 @@ class PipelineUtil {
         File parentdir = this.createDirectory(new File(path).getParent())
 
         // Create the Zip file
-        def zipFile = new ZipFile(path)
+        def zipFile = null //new ZipFile(path)
         zipFile.extractFile(fileToBeExtracted, parentdir.getAbsolutePath())
 
         return new File(parentdir, fileToBeExtracted).getBytes()

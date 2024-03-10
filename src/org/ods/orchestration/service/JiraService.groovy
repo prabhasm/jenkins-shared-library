@@ -1,6 +1,6 @@
 package org.ods.orchestration.service
 
-@Grab(group="com.konghq", module="unirest-java", version="2.4.03", classifier="standalone")
+//@Grab(group="com.konghq", module="unirest-java", version="2.4.03", classifier="standalone")
 
 import com.cloudbees.groovy.cps.NonCPS
 
@@ -10,7 +10,7 @@ import org.ods.orchestration.util.StringCleanup
 
 import java.net.URI
 
-import kong.unirest.Unirest
+//import kong.unirest.Unirest
 
 import org.apache.http.client.utils.URIBuilder
 
@@ -63,7 +63,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to add labels to Jira issue. \'names\' is undefined.')
         }
 
-        def response = Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
+        def response = null /*Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
             .routeParam("issueIdOrKey", issueIdOrKey)
             .basicAuth(this.username, this.password)
             .header("Accept", "application/json")
@@ -77,7 +77,7 @@ class JiraService {
                     ]
                 ]
             ))
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to add labels to Jira issue. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -100,7 +100,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to append comment to Jira issue. \'comment\' is undefined.')
         }
 
-        def response = Unirest.post("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}/comment")
+        def response = null /*Unirest.post("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}/comment")
             .routeParam("issueIdOrKey", issueIdOrKey)
             .basicAuth(this.username, this.password)
             .header("Accept", "application/json")
@@ -108,7 +108,7 @@ class JiraService {
             .body(JsonOutput.toJson(
                 [body: comment]
             ))
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to append comment to Jira issue. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -135,7 +135,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to create Jira issue link. \'outwardIssue\' is undefined.')
         }
 
-        def response = Unirest.post("${this.baseURL}/rest/api/2/issueLink")
+        def response = null /*Unirest.post("${this.baseURL}/rest/api/2/issueLink")
             .basicAuth(this.username, this.password)
             .header("Accept", "application/json")
             .header("Content-Type", "application/json")
@@ -152,7 +152,7 @@ class JiraService {
                     ]
                 ]
             ))
-            .asString()
+            .asString()*/
 
         response.ifSuccess {
             if (response.getStatus() != 201) {
@@ -194,7 +194,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to create Jira issue. \'description\' is undefined.')
         }
 
-        def response = Unirest.post("${this.baseURL}/rest/api/2/issue")
+        def response = null /*Unirest.post("${this.baseURL}/rest/api/2/issue")
             .basicAuth(this.username, this.password)
             .header("Accept", "application/json")
             .header("Content-Type", "application/json")
@@ -215,7 +215,7 @@ class JiraService {
                     ]
                 ]
             ))
-            .asString()
+            .asString()*/
 
         response.ifSuccess {
             if (response.getStatus() != 201) {
@@ -251,11 +251,11 @@ class JiraService {
                 '\'projectKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/platform/1.0/docgenreports/{projectKey}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/platform/1.0/docgenreports/{projectKey}")
             .routeParam("projectKey", projectKey.toUpperCase())
             .basicAuth(this.username, this.password)
             .header("Accept", "application/json")
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = 'Error: unable to get documentation generation data. Jira responded with code: ' +
@@ -279,12 +279,12 @@ class JiraService {
                 '\'projectKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/platform/1.1/deltadocgenreports/{projectKey}/{version}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/platform/1.1/deltadocgenreports/{projectKey}/{version}")
             .routeParam("projectKey", projectKey.toUpperCase())
             .routeParam("version", version)
             .basicAuth(this.username, this.password)
             .header("Accept", "application/json")
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = 'Error: unable to get documentation generation data. Jira responded with code: ' +
@@ -303,9 +303,9 @@ class JiraService {
 
     @NonCPS
     Map getFileFromJira(String url) {
-        def response = Unirest.get(url)
+        def response = null /*Unirest.get(url)
             .basicAuth(this.username, this.password)
-            .asBytes()
+            .asBytes()*/
 
         response.ifFailure {
             def message = "Error: unable to get file from Jira. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -338,12 +338,12 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to get Jira issue type metadata. \'issueTypeId\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/issue/createmeta/{projectKey}/issuetypes/{issueTypeId}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/issue/createmeta/{projectKey}/issuetypes/{issueTypeId}")
             .routeParam('projectKey', projectKey.toUpperCase())
             .routeParam('issueTypeId', issueTypeId)
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get Jira issue type metadata. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -364,11 +364,11 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to get Jira issue types. \'projectKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/issue/createmeta/{projectKey}/issuetypes")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/issue/createmeta/{projectKey}/issuetypes")
             .routeParam('projectKey', projectKey.toUpperCase())
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get Jira issue types. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -389,11 +389,11 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to load project version from Jira. \'projectKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/project/{projectKey}/versions")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/project/{projectKey}/versions")
             .routeParam('projectKey', projectKey.toUpperCase())
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get project version for projectKey ${projectKey}. Jira responded with code: '${response.getStatus()}' and message '${response.getBody()}'."
@@ -416,11 +416,11 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to get project from Jira. \'projectKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/project/{projectKey}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/project/{projectKey}")
             .routeParam('projectKey', projectKey.toUpperCase())
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get project. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -441,11 +441,11 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to get project versions from Jira. \'projectKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/project/{projectKey}/versions")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/project/{projectKey}/versions")
             .routeParam('projectKey', projectKey.toUpperCase())
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get project versions. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -466,12 +466,12 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to remove labels from Jira issue. \'issueIdOrKey\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
             .routeParam("issueIdOrKey", issueIdOrKey)
             .queryString('fields', 'labels')
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get labels from Jira issue. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -494,7 +494,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to remove labels from Jira issue. \'names\' is undefined.')
         }
 
-        def response = Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
+        def response = null /*Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
             .routeParam('issueIdOrKey', issueIdOrKey)
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
@@ -508,7 +508,7 @@ class JiraService {
                     ]
                 ]
             ))
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to remove labels from Jira issue. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -534,12 +534,12 @@ class JiraService {
             query.maxResults = 1000
         }
 
-        def response = Unirest.post("${this.baseURL}/rest/api/2/search")
+        def response = null /*Unirest.post("${this.baseURL}/rest/api/2/search")
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
             .header('Content-Type', 'application/json')
             .body(JsonOutput.toJson(query))
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to get Jira issues for JQL query. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -570,7 +570,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to update select list fields on Jira issue. \'fields\' is undefined.')
         }
 
-        def response = Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
+        def response = null /*Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
             .routeParam('issueIdOrKey', issueIdOrKey)
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
@@ -591,7 +591,7 @@ class JiraService {
                     }
                 ]
             ))
-            .asString()
+            .asString()*/
 
         response.ifSuccess {
             if (response.getStatus() != 204) {
@@ -620,7 +620,7 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to update text fields on Jira issue. \'fields\' is undefined.')
         }
 
-        def response = Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
+        def response = null /*Unirest.put("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
             .routeParam('issueIdOrKey', issueIdOrKey)
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
@@ -639,7 +639,7 @@ class JiraService {
                     }
                 ]
             ))
-            .asString()
+            .asString()*/
 
         response.ifSuccess {
             if (response.getStatus() != 204) {
@@ -668,13 +668,13 @@ class JiraService {
             throw new IllegalArgumentException('Error: unable to retrieve text fields on Jira issue. \'fields\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/api/2/issue/{issueIdOrKey}")
             .routeParam('issueIdOrKey', issueIdOrKey)
             .queryString('fields', fields.join(','))
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
             .header('Content-Type', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             def message = "Error: unable to retrieve text fields (${fields}) on Jira issue ${issueIdOrKey}. Jira responded with code: '${response.getStatus()}' and message: '${response.getBody()}'."
@@ -701,12 +701,12 @@ class JiraService {
                 '\'versionName\' is undefined.')
         }
 
-        def response = Unirest.get("${this.baseURL}/rest/platform/1.1/productreleases/{projectKey}/versions/{version}")
+        def response = null /*Unirest.get("${this.baseURL}/rest/platform/1.1/productreleases/{projectKey}/versions/{version}")
             .routeParam('projectKey', projectKey.toUpperCase())
             .routeParam('version', versionName)
             .basicAuth(this.username, this.password)
             .header('Accept', 'application/json')
-            .asString()
+            .asString()*/
 
         response.ifFailure {
             if (response.getStatus() == 400) {
