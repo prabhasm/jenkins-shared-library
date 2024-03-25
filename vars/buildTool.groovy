@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 
+import com.dsg.exception.ParameterException
 /**
  * =================================================
  * 1.0.0
@@ -16,11 +17,11 @@ def call(Map hookConfig = [:]){
     def toolType = hookConfig.build.toolType
 
     if(!toolType){
-        throw new Exception("toolType is required")
+        throw new ParameterException("toolType is required")
     }
 
     if(toolType == ""){
-        throw new Exception("toolType cannot be blank")
+        throw new ParameterException("toolType cannot be blank")
     }
 
 

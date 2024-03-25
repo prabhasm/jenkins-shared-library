@@ -53,7 +53,7 @@ class buildToolTest extends Specification {
     }
 
     // Mock mavenPipeline function for testing
-    def mavenPipeline(logger, mavenHome, settingsXml, projectDirectory, goals) {
+    def buildTool(logger, mavenHome, settingsXml, projectDirectory, goals) {
         // Mock the behavior of mavenPipeline function
         return goals == 'invalid goal' ? 'FAILED' : 'SUCCESS'
     }
