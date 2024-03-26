@@ -39,7 +39,7 @@ def call(Map hookConfig = [:]){
         command=hookConfig.build.command
         this
     }
-
+    println(build)
     def builderClass = LibraryUtil.capitalizeFirstLetter(toolType+'Builder')
     def result = "${builderClass}"(hookConfig)
 
