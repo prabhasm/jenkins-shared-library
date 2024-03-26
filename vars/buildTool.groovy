@@ -30,7 +30,7 @@ def call(Map hookConfig = [:]){
     }
 
     def builderClass = toolType.toLowerCase()+'Builder'
-    def result = ${builderClass}(hookConfig)
+    def result = '${builderClass}'(hookConfig)
 
 
 }
